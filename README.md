@@ -7,8 +7,8 @@ This Python app generates data, analyzes it in Spark Streaming, and visualizes t
 To run these demos, you need:
 
 * A working installation of [Spark](http://spark.apache.org/downloads.html)
-* An installation of Python with standard scientific computing libraries (NumPy, SciPy, ScikitLearn)
 * A running [Lightning](http://lightning-viz.org) server
+* An installation of Python with standard scientific computing libraries (NumPy, SciPy, ScikitLearn)
 
 With those three things in place, set `SPARK_HOME` to your Spark installation, then start the executable:
 
