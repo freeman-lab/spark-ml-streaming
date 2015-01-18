@@ -1,0 +1,63 @@
+#!/usr/bin/env python
+
+import time
+import subprocess
+import argparse
+
+from lightning import Lightning
+
+from demo import StreamingDemo
+from demo.util import findspark, findjar, baseargs
+
+def main():
+
+    # parse arguments
+    parser = argparse.ArgumentParser(description='Streaming KMeans demo.')
+    parser = baseargs(parser)
+    parser.add_argument('-nc', '--ncenters', type=int, default=3, required=False, 
+        help='Number of cluster centers')
+    parser.add_argument('-nd', '--ndims', type=int, default=2, required=False, 
+        help='Number of dimensions')
+    parser.add_argument('-rs', '--randomseed', type=int, default=None, required=False,
+        help='Random seed')
+    parser.add_argument('-std', '--std', type=float, default=0.2, required=False,
+        help='Standard deviation of points')
+    args = parser.parse_args()
+
+    # basic setup
+    sparkhome = findspark()
+    jar = findjar()
+    
+    # set up lightning
+    if args.lightning:
+        lgn = Lightning(args.lightning)
+        lgn.create_session('streaming-kmeans')
+        lgn.session.open()
+    else:
+        lgn = None
+
+    # setup the demo
+    s = StreamingDemo.make('kmeans', npoints=args.npoints, nbatches=args.nbatches)
+    s.setup('/Users/freemanj11/streamdemo/', overwrite=args.overwrite)
+    s.params(ncenters=args.ncenters, ndims=args.ndims, std=args.std, seed=args.randomseed)
+
+    # setupt the spark job
+    sparkSubmit = sparkhome + "/bin/spark-submit"
+    sparkArgs = ["--class", "demo.spark.streaming.KMeans", jar]
+    demoArgs = [s.datain, s.dataout, str(args.batchtime), str(args.ncenters), str(args.ndims), str(args.halflife), str(args.timeunit)]
+    cmd = [sparkSubmit] + sparkArgs + demoArgs
+
+    try:
+        # start the spark job    
+        p = subprocess.Popen(cmd)
+        # wait for spark streaming to start up
+        time.sleep(3)
+        # start the demo
+        s.run(lgn)
+
+    finally:
+
+       p.kill()
+
+if __name__ == "__main__":
+    main()

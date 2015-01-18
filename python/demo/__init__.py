@@ -1,0 +1,1 @@
+from demo.base import StreamingDemo
