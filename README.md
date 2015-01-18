@@ -1,11 +1,9 @@
 ## Visualize streaming machine learning in Spark
 
 ### About
-------
 This Python app generates data, analyzes it in Spark Streaming, and visualizes the results with Lightning. The demos are designed for local use, but the same algorithms can run at scale on a cluster with millions of records.
 
 ### How to use
-------
 To run these demos, you need:
 
 * A working installation of [Spark](http://spark.apache.org/downloads.html)
@@ -27,7 +25,6 @@ To see all options type:
 	bin/streaming-kmeans -h
 
 ### Build
----------------
 The demo relies on a Scala package included pre-built inside `python/lib`. To rebuild it, use sbt:
 
 	cd scala
