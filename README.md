@@ -1,4 +1,4 @@
-## Visualize streaming machine learning algorithms in Spark
+## Visualize streaming machine learning in Spark
 
 ### About
 ------
