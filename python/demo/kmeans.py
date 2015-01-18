@@ -34,7 +34,6 @@ class StreamingKMeans(StreamingDemo):
 			self.writepoints(pts, i)
 			time.sleep(1)
 
-			# try:
 			output = glob.iglob(self.dataout + '/*')
 			try:
 				fname = max(output, key=os.path.getctime)
