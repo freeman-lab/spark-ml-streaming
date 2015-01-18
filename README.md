@@ -28,7 +28,7 @@ To see all options type:
 
 ### Build
 ---------------
-The demo relies on a Scala package, which is included pre-built inside `python/lib`. To rebuild it, use sbt:
+The demo relies on a Scala package included pre-built inside `python/lib`. To rebuild it, use sbt:
 
 	cd scala
 	sbt package
