@@ -1,5 +1,8 @@
 ## Visualize streaming machine learning in Spark
 
+![two-dimensional-demo](https://github.com/freeman-lab/spark-streaming-demos/blob/master/animations/databricks-blog-post/4-five-clusters.gif)
+![one-dimensional-demo](https://github.com/freeman-lab/spark-streaming-demos/blob/master/animations/databricks-blog-post/6-half-life-5p0.gif)
+
 ### About
 This Python app generates data, analyzes it in Spark Streaming, and visualizes the results with Lightning. The demos are designed for local use, but the same algorithms can run at scale on a cluster with millions of records.
 
