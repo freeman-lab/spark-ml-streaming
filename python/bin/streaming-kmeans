@@ -20,8 +20,10 @@ def main():
         help='Number of dimensions')
     parser.add_argument('-rs', '--randomseed', type=int, default=None, required=False,
         help='Random seed')
-    parser.add_argument('-std', '--std', type=float, default=0.2, required=False,
+    parser.add_argument('-sd', '--std', type=float, default=0.2, required=False,
         help='Standard deviation of points')
+    parser.add_argument('-up', '--update', type=str, choices=('jump', 'drift', 'none'), default='drift', required=False,
+        help='Update behavior')
     args = parser.parse_args()
 
     # basic setup
@@ -37,11 +39,11 @@ def main():
         lgn = None
 
     # setup the demo
-    s = StreamingDemo.make('kmeans', npoints=args.npoints, nbatches=args.nbatches)
+    s = StreamingDemo.make('kmeans', npoints=args.npoints, nbatches=args.nbatches, batchtime=args.batchtime)
     s.setup('/Users/freemanj11/streamdemo/', overwrite=args.overwrite)
     s.params(ncenters=args.ncenters, ndims=args.ndims, std=args.std, seed=args.randomseed)
 
-    # setupt the spark job
+    # setup the spark job
     sparkSubmit = sparkhome + "/bin/spark-submit"
     sparkArgs = ["--class", "demo.spark.streaming.KMeans", jar]
     demoArgs = [s.datain, s.dataout, str(args.batchtime), str(args.ncenters), str(args.ndims), str(args.halflife), str(args.timeunit)]
@@ -51,7 +53,7 @@ def main():
         # start the spark job    
         p = subprocess.Popen(cmd)
         # wait for spark streaming to start up
-        time.sleep(3)
+        time.sleep(4)
         # start the demo
         s.run(lgn)
 
