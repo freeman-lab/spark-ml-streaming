@@ -27,6 +27,8 @@ To see all options type:
 
 	bin/streaming-kmeans -h
 
+For two-dimensional data `-nd 2` you will see a scatter plot, and for one-dimensional data `-nd 1` you will see a line plot.
+
 ### Build
 The demo relies on a Scala package included pre-built inside `python/lib`. To rebuild it, use sbt:
 
