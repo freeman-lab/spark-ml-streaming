@@ -1,6 +1,8 @@
 import os
 import glob
 
+from numpy import loadtxt
+
 def findspark():
 	
 	sparkhome = os.getenv("SPARK_HOME")
@@ -18,6 +20,32 @@ def findjar():
 		raise Exception("Cannot find jar, looking at %s" % jar)
 	else:
 		return jar[0]
+
+def loadrecent(filename, oldtime, oldoutput):
+
+	try:
+		fname = max(glob.iglob(filename), key=os.path.getctime)
+	except:
+		print('No file found')
+		return [], oldtime
+
+	newtime = os.path.getctime(fname)
+	if not (newtime > oldtime):
+		print('File is not new')
+		return oldoutput, oldtime	
+
+	try:
+		f = open(fname)
+		if os.fstat(f.fileno()).st_size == 0:
+			print('File is empty')
+			return [], oldtime
+
+	except:
+		print('Cannot load file')
+		return [], oldtime
+
+	prediction = loadtxt(fname, delimiter=',')
+	return prediction, newtime
 
 def baseargs(parser):
 
