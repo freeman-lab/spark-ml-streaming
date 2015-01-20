@@ -36,6 +36,8 @@ class StreamingKMeans(StreamingDemo):
 		
 		# loop over batches
 		for i in range(0, self.nbatches):
+
+			print('generating batch %g' % i)
 			
 			# drift means the points will slowly drift by adding noise to the position
 			if self.update == 'drift':
