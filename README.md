@@ -23,13 +23,13 @@ Then set `SPARK_HOME` to your Spark installation, and start an executable:
 
 Where `temporary_path` is where data will be written / read, and `lightning_host` is the address of your Lightning server. After it starts, your browser will open, and you should see data appear shortly. 
 
-Try running with different settings, for example, to run a 1-d version with 4 clusters and a half-life of 3 batches:
+Try running with different settings, for example, to run a 1-d version with 4 clusters and a half-life of 10 points:
 
-	bin/streaming-kmeans <temporary_path> -l <lighting_host> -nc 4 -nd 1 -hl 3 -tu batches
+	streaming-kmeans <temporary_path> -l <lighting_host> -nc 4 -nd 1 -hl 10 -tu points
 
 To see all options type:
 
-	bin/streaming-kmeans -h
+	streaming-kmeans -h
 
 2-d data will make a scatter plot and 1-d data will make a line plot.
 
