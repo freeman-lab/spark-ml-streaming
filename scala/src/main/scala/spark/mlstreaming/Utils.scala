@@ -1,4 +1,4 @@
-package demo.spark.streaming
+package spark.mlstreaming
 
 import java.io.{FileWriter, BufferedWriter, File}
 

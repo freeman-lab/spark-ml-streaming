@@ -1,6 +1,6 @@
-name := "spark-streaming-demos"
+name := "spark-ml-streaming"
 
-version := "0.1.0_dev"
+version := "0.1.0"
 
 scalaVersion := "2.10.3"
 

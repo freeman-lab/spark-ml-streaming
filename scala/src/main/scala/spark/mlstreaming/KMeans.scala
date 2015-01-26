@@ -1,4 +1,4 @@
-package demo.spark.streaming
+package spark.mlstreaming
 
 import java.util.Calendar
 
@@ -12,9 +12,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
  * Demo of streaming k-means with Spark Streaming.
  * Reads data from one directory, and prints models and predictions to another.
  *
- * Run via top-level executable:
- *
- * spark-streaming-demo kmeans opts
+ * Run via Python executable in the top-level project directory
  *
  */
 
