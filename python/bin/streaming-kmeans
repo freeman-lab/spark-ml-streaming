@@ -20,7 +20,7 @@ def main():
         help='Number of dimensions')
     parser.add_argument('-rs', '--randomseed', type=int, default=None, required=False,
         help='Random seed')
-    parser.add_argument('-sd', '--std', type=float, default=0.2, required=False,
+    parser.add_argument('-sd', '--std', type=float, default=0.3, required=False,
         help='Standard deviation of points')
     parser.add_argument('-up', '--update', type=str, choices=('jump', 'drift', 'none'), default='drift', required=False,
         help='Update behavior')
