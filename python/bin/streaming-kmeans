@@ -41,7 +41,7 @@ def main():
     # setup the demo
     s = StreamingDemo.make('kmeans', npoints=args.npoints, nbatches=args.nbatches)
     s.setup('/Users/freemanj11/streamdemo/', overwrite=args.overwrite)
-    s.params(ncenters=args.ncenters, ndims=args.ndims, std=args.std, seed=args.randomseed)
+    s.params(ncenters=args.ncenters, ndims=args.ndims, std=args.std, seed=args.randomseed, update=args.update)
 
     # setup the spark job
     sparkSubmit = sparkhome + "/bin/spark-submit"
