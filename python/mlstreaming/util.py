@@ -16,7 +16,7 @@ def findspark():
 def findjar():
   
     calldir = os.path.dirname(os.path.realpath(__file__))
-    jardir = os.path.join(calldir, '..', 'lib', '*.jar')
+    jardir = os.path.join(calldir, 'lib', '*.jar')
     jar = glob.glob(jardir)
     if len(jar) == 0 or not os.path.exists(jar[0]):
         raise Exception("Cannot find jar, looking at %s" % jar)
