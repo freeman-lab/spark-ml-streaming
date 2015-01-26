@@ -4,7 +4,7 @@
 ![one-dimensional-demo](https://github.com/freeman-lab/spark-streaming-demos/blob/master/animations/databricks-blog-post/6-half-life-5p0.gif)
 
 ### About
-This Python app generates data, analyzes it in Spark Streaming, and visualizes the results with Lightning. The demos are designed for local use, but the same algorithms can run at scale on a cluster with millions of records.
+This Python app generates data, analyzes it in Spark Streaming, and visualizes the results with Lightning. The analyses use streaming machine learning algorithms included with Spark as of version 1.2. The demos are designed for local use, but the same algorithms can run at scale on a cluster with millions of records.
 
 ### How to use
 To run these demos, you need:
@@ -13,9 +13,13 @@ To run these demos, you need:
 * A running [Lightning](http://lightning-viz.org) server
 * An installation of Python with standard scientific computing libraries (NumPy, SciPy, ScikitLearn)
 
-With those three things in place, set `SPARK_HOME` to your Spark installation, then start the executable:
+With those three things in place, install using:
 
-	bin/streaming-kmeans <temporary_path> -l <lighting_host>
+	pip install spark-ml-streaming
+
+Then set `SPARK_HOME` to your Spark installation, and start an executable:
+
+	streaming-kmeans <temporary_path> -l <lighting_host>
 
 Where `temporary_path` is where data will be written / read, and `lightning_host` is the address of your Lightning server. After it starts, your browser will open with the visualization, and you should see data appear shortly. 
 
