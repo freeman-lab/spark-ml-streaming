@@ -21,11 +21,11 @@ Then set `SPARK_HOME` to your Spark installation, and start an executable:
 
 	streaming-kmeans <temporary_path> -l <lighting_host>
 
-Where `temporary_path` is where data will be written / read, and `lightning_host` is the address of your Lightning server. After it starts, your browser will open with the visualization, and you should see data appear shortly. 
+Where `temporary_path` is where data will be written / read, and `lightning_host` is the address of your Lightning server. After it starts, your browser will open, and you should see data appear shortly. 
 
-Try running with different settings:
+Try running with different settings, for example, to run a one-dimensional version with four clusters and a half-life of 3 batches:
 
-	bin/streaming-kmeans <temporary_path> -l <lighting_host> -nc <n_clusters> -hl <half_life>
+	bin/streaming-kmeans <temporary_path> -l <lighting_host> -nc 4 -nd 1 -hl 3 -tu batches
 
 To see all options type:
 
