@@ -1,0 +1,1 @@
+from mlstreaming.base import StreamingDemo

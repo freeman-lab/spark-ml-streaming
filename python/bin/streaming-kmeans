@@ -6,8 +6,8 @@ import argparse
 
 from lightning import Lightning
 
-from demo import StreamingDemo
-from demo.util import findspark, findjar, baseargs
+from mlstreaming import StreamingDemo
+from mlstreaming.util import findspark, findjar, baseargs
 
 def main():
 
@@ -45,7 +45,7 @@ def main():
 
     # setup the spark job
     sparkSubmit = sparkhome + "/bin/spark-submit"
-    sparkArgs = ["--class", "demo.spark.streaming.KMeans", jar]
+    sparkArgs = ["--class", "spark.mlstreaming.KMeans", jar]
     demoArgs = [s.datain, s.dataout, str(args.batchtime), str(args.ncenters), str(args.ndims), str(args.halflife), str(args.timeunit)]
     cmd = [sparkSubmit] + sparkArgs + demoArgs
 
