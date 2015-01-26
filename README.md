@@ -34,7 +34,7 @@ To see all options type:
 2-d data will make a scatter plot and 1-d data will make a line plot.
 
 ### Build
-The demo relies on a Scala package included pre-built inside `python/lib`. To rebuild it, use sbt:
+The demo relies on a Scala package included pre-built inside `python/mlstreaming/lib`. To rebuild it, use sbt:
 
 	cd scala
 	sbt package
