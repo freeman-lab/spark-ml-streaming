@@ -117,4 +117,4 @@ class StreamingKMeans(StreamingDemo):
                             viz.append(pts, label=clrs, size=s/2)
 
                     else:
-                        raise Exception('Plotting only supported with 2 or 3 dimensions')
+                        raise Exception('Plotting only supported with 1 or 2 dimensions')
