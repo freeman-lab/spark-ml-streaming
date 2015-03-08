@@ -1,6 +1,6 @@
-## Visualize streaming machine learning in Spark
-
 [![Join the chat at https://gitter.im/freeman-lab/spark-ml-streaming](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/freeman-lab/spark-ml-streaming?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+## Visualize streaming machine learning in Spark
 
 ![two-dimensional-demo](https://github.com/freeman-lab/spark-streaming-demos/blob/master/animations/databricks-blog-post/4-five-clusters.gif)
 ![one-dimensional-demo](https://github.com/freeman-lab/spark-streaming-demos/blob/master/animations/databricks-blog-post/6-half-life-5p0.gif)
