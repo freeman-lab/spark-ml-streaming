@@ -30,7 +30,8 @@ Try running with different settings, for example, to run a 1-d version with 4 cl
 	streaming-kmeans -p <temporary_path> -l <lighting_host> -nc 4 -nd 1 -hl 10 -tu points
 
 Where `temporary_path` is where data will be written / read, if not specified the current tmp directory will be used (See Python [tempfile.gettempdir()](https://docs.python.org/2/library/tempfile.html))
-2-d data will make a scatter plot and 1-d data will make a line plot. You can set this with -nd.
+
+2D data will make a scatter plot and 1D data will make a line plot. You can set this with -nd.
 
 To see all options type:
 
