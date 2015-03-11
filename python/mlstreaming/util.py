@@ -52,9 +52,9 @@ def loadrecent(filename, oldtime, oldoutput):
 
 def baseargs(parser):
 
-    parser.add_argument('path', type=str,
+    parser.add_argument('-p', '--path', type=str, default=None, required=False,
                         help='Temporary location to store outputs')
-    parser.add_argument('-o', '--overwrite', type=bool, default=True, required=False,
+    parser.add_argument('-o', '--overwrite', type=bool, choices=(True, False), default=True, required=False,
                         help='Whether to overwrite the temporary location if it already exists')
     parser.add_argument('-lgn', '--lightning', type=str, default=None, required=False,
                         help='Lightning server for visualization')
@@ -69,3 +69,4 @@ def baseargs(parser):
     parser.add_argument('-tu', '--timeunit', type=str, default='batches', choices=('batches', 'points'), required=False,
                         help='Time unit for streaming updates')
     return parser
+

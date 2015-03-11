@@ -21,19 +21,20 @@ With those three things in place, install using:
 
 Then set `SPARK_HOME` to your Spark installation, and start an executable:
 
-	streaming-kmeans <temporary_path> -l <lighting_host>
+	streaming-kmeans -l <lighting_host>
 
-Where `temporary_path` is where data will be written / read, and `lightning_host` is the address of your Lightning server. After it starts, your browser will open, and you should see data appear shortly. 
+Where `lightning_host` is the address of your Lightning server. After it starts, your browser will open, and you should see data appear shortly. 
 
 Try running with different settings, for example, to run a 1-d version with 4 clusters and a half-life of 10 points:
 
-	streaming-kmeans <temporary_path> -l <lighting_host> -nc 4 -nd 1 -hl 10 -tu points
+	streaming-kmeans -p <temporary_path> -l <lighting_host> -nc 4 -nd 1 -hl 10 -tu points
+
+Where `temporary_path` is where data will be written / read, if not specified the current tmp directory will be used (See Python [tempfile.gettempdir()](https://docs.python.org/2/library/tempfile.html))
+2-d data will make a scatter plot and 1-d data will make a line plot. You can set this with -nd.
 
 To see all options type:
 
 	streaming-kmeans -h
-
-2-d data will make a scatter plot and 1-d data will make a line plot.
 
 ### Build
 The demo relies on a Scala package included pre-built inside `python/mlstreaming/lib`. To rebuild it, use sbt:

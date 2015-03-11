@@ -3,6 +3,8 @@
 import time
 import subprocess
 import argparse
+import os
+import tempfile
 
 from lightning import Lightning
 
@@ -24,6 +26,8 @@ def main():
         help='Standard deviation of points')
     parser.add_argument('-up', '--update', type=str, choices=('jump', 'drift', 'none'), default='drift', required=False,
         help='Update behavior')
+    parser.add_argument('-a', '--autoopen', type=bool, choices=(True, False), default=True, required=False,
+        help='Whether to automatically open Lightning session on a browser')
     args = parser.parse_args()
 
     # basic setup
@@ -34,13 +38,20 @@ def main():
     if args.lightning:
         lgn = Lightning(args.lightning)
         lgn.create_session('streaming-kmeans')
-        lgn.session.open()
+        if (args.autoopen):
+            lgn.session.open()
     else:
         lgn = None
 
+    # set temp path
+    path = args.path
+    if not path or path == '':
+        path = tempfile.gettempdir()
+    tmpdir = os.path.join(path, 'streamkmeans')
+
     # setup the demo
     s = StreamingDemo.make('kmeans', npoints=args.npoints, nbatches=args.nbatches)
-    s.setup('/Users/freemanj11/streamdemo/', overwrite=args.overwrite)
+    s.setup(tmpdir, overwrite=args.overwrite)
     s.params(ncenters=args.ncenters, ndims=args.ndims, std=args.std, seed=args.randomseed, update=args.update)
 
     # setup the spark job
@@ -63,3 +74,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
